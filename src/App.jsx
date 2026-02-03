@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useEffect, useState} from "react";
+import CountryList from "./components/CountryList.jsx";
+const url = "https://restcountries.com/v3.1/all";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [countries, setCountries] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [search, setSearch] = useState('');
+    const [region, setRegion] = useState('all');
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    useEffect(() => {
+        // fetch logic
+        const controller = new AbortController();
+        const fetchData = () => {
+           try {
+               setLoading(true);
+               const res = fetch(url,{
+                   signal: controller.signal,
+               });
+               const data = res.json();
+
+               console.log(data);
+               setCountries(data);
+           }catch(err) {
+               setError(err.message);
+           }finally {
+               setLoading(false);
+           }
+        }
+        fetchData();
+        return () => {
+            setLoading(false);
+            controller.abort();
+        }
+    }, [search, region]);
+
+    return (
+        <div>
+            {
+                !countries.length && <p>No results found</p>
+            }
+            <CountryList countries={countries}/>
+        </div>
+    )
 }
 
 export default App
