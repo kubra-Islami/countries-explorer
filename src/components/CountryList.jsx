@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Country from "./Country.jsx";
 
 function CountryList({countries}) {
+
+    useEffect(()=>{
+        console.log(countries);
+    })
     return (
         <div>
             {

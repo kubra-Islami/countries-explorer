@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import CountryList from "./components/CountryList.jsx";
-const url = "https://restcountries.com/v3.1/all";
+
+const url = "https://restcountries.com/v3.1/all?fields=name,flags,region,population";
 
 
 function App() {
@@ -13,35 +14,49 @@ function App() {
     useEffect(() => {
         // fetch logic
         const controller = new AbortController();
-        const fetchData = () => {
-           try {
-               setLoading(true);
-               const res = fetch(url,{
-                   signal: controller.signal,
-               });
-               const data = res.json();
+        async function fetchCountries() {
+            try {
+                setLoading(true);
+                setError("");
+                const res = await fetch(url, {
+                    signal: controller.signal,
+                });
+                const data = await res.json();
+                if (data.status === 400) {
+                    setCountries([]);
+                    setError(data.Error || "No results.");
+                    return;
+                }
+                console.log(data);
+                setCountries(data || []);
+            } catch (err) {
+                if (err?.name !== "AbortError") setError("Failed to fetch countries");
+                // setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCountries();
+        return controller.abort();
 
-               console.log(data);
-               setCountries(data);
-           }catch(err) {
-               setError(err.message);
-           }finally {
-               setLoading(false);
-           }
-        }
-        fetchData();
-        return () => {
-            setLoading(false);
-            controller.abort();
-        }
-    }, [search, region]);
+    }, [countries]);
 
     return (
         <div>
             {
-                !countries.length && <p>No results found</p>
+                !countries.length && (
+                    <div className="alert alert-danger glass border-0" role="alert">
+                        <strong>Oops:</strong> <span>No results found.</span>
+                    </div>
+                )
             }
-            <CountryList countries={countries}/>
+            {error ? (
+                <div className="alert alert-danger glass border-0 w-50 mx-auto mt-3" role="alert">
+                    <strong>Oops:</strong> {error}
+                </div>
+            ) : null}
+
+            <CountryList countries={countries} loading={loading}/>
         </div>
     )
 }
