@@ -7,10 +7,10 @@
 
 body {
   min-height: 100vh;
-  /*background:*/
-  /*        radial-gradient(900px 520px at 20% 10%, rgba(99, 102, 241, 0.22), transparent 60%),*/
-  /*        radial-gradient(900px 520px at 80% 15%, rgba(236, 72, 153, 0.20), transparent 60%),*/
-  /*        radial-gradient(900px 520px at 50% 85%, rgba(34, 211, 238, 0.16), transparent 60%),*/
-  /*        linear-gradient(180deg, var(--bg1), var(--bg2));*/
-  /*color: #e9eef8;*/
+  background:
+          radial-gradient(900px 520px at 20% 10%, rgba(99, 102, 241, 0.22), transparent 60%),
+          radial-gradient(900px 520px at 80% 15%, rgba(236, 72, 153, 0.20), transparent 60%),
+          radial-gradient(900px 520px at 50% 85%, rgba(34, 211, 238, 0.16), transparent 60%),
+          linear-gradient(180deg, var(--bg1), var(--bg2));
+  color: #e9eef8;
 }
