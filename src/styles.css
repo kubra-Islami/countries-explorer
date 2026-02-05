@@ -14,3 +14,25 @@ body {
           linear-gradient(180deg, var(--bg1), var(--bg2));
   color: #e9eef8;
 }
+
+.glass {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+}
+
+
+.skeleton {
+    background: rgba(255,255,255,0.10);
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: shimmer 1.2s infinite;
+}

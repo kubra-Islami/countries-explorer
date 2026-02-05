@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-function Header() {
+function Header({countriesRegion,region}) {
+
     return (
         <div className="dropdown py-3">
             <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -8,15 +9,13 @@ function Header() {
                 region
             </button>
             <ul className="dropdown-menu">
+
                 <li>
-                    <button className="dropdown-item" type="button">Action</button>
+                    <button className="dropdown-item" type="button">All</button>
                 </li>
-                <li>
-                    <button className="dropdown-item" type="button">Another action</button>
-                </li>
-                <li>
-                    <button className="dropdown-item" type="button">Something else here</button>
-                </li>
+                {
+
+                }
             </ul>
         </div>
     );

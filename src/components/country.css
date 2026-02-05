@@ -62,7 +62,7 @@ body {
 
 .poster-badges {
     position: absolute;
-    left: 175px;
+    left: 30%;
     right: 12px;
     bottom: 12px;
     display: flex;
@@ -110,4 +110,12 @@ body {
 
 @keyframes shimmer {
     100% { transform: translateX(100%); }
+}
+
+
+@media screen and (width <= 600px) {
+    .poster-badges {
+        left: 8%;
+    }
+
 }
