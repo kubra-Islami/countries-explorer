@@ -52,7 +52,7 @@ This project intentionally practices:
 | Filter by region | https://restcountries.com/v3.1/region/{region}?fields=name,flags,region,population` |
 
 To improve performance, only required fields are requested:
-
+?fields=name,flags,region,population
 
 ---
 
