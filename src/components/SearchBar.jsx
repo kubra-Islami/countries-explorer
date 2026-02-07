@@ -15,8 +15,8 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search movies... (e.g., Batman, Dune, Inception)"
-          aria-label="Search movies"
+          placeholder="Search Countries... (e.g., Russia, Americas, Indonesia)"
+          aria-label="Search Countries"
         />
 
         {hasText ? (
@@ -27,7 +27,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
             aria-label="Clear search"
             title="Clear"
           >
-            <X size={16} />
+            <X size={16} className="text-white" />
           </button>
         ) : null}
       </div>

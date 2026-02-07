@@ -1,18 +1,18 @@
 import React from 'react';
 import Country from "./Country.jsx";
 
-// import SkeletonGrid from "./SkeletonGrid.jsx";
+function CountryList({countries}) {
 
-function CountryList({countries, loading}) {
-    // if (loading) return <SkeletonGrid />;
-    if (loading) return (
-        <div className="d-flex flex-column justify-content-center align-items-center">
-            <div role="status">
-                <span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+    if (!countries || !countries.length) {
+        return (
+            <div className="glass rounded-4 p-4 mb-3">
+                <div className="h5 mb-1">No results</div>
+                <div className="muted">
+                    Try searching something else (e.g., France, Germany,Italy).
+                </div>
             </div>
-            <span role="status" className="">Loading countries...</span>
-        </div>
-    )
+        );
+    }
     return (
         <div className="row g-3 g-md-4 ">
             {countries.map((country) => (

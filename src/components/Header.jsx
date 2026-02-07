@@ -1,4 +1,6 @@
-function Header({ setRegion }) {
+import React from "react";
+
+function Header({setRegion}) {
     const regions = [
         'all',
         'Africa',
@@ -34,4 +36,5 @@ function Header({ setRegion }) {
         </div>
     );
 }
+
 export default Header;
