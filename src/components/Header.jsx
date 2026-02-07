@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({setRegion}) {
+function Header({setRegion,region}) {
     const regions = [
         'all',
         'Africa',
@@ -17,20 +17,22 @@ function Header({setRegion}) {
                 type="button"
                 data-bs-toggle="dropdown"
             >
-                Select Region
+                {region ? region : "Select Region"}
             </button>
 
             <ul className="dropdown-menu">
                 {regions.map((reg) => (
-                    <li key={reg}>
-                        <button
-                            className="dropdown-item"
-                            type="button"
-                            onClick={() => setRegion(reg)}
-                        >
-                            {reg}
-                        </button>
-                    </li>
+                  <>
+                      <li key={reg}>
+                          <button
+                              className="dropdown-item"
+                              type="button"
+                              onClick={() => setRegion(reg)}
+                          >
+                              {reg}
+                          </button>
+                      </li>
+                  </>
                 ))}
             </ul>
         </div>

@@ -58,7 +58,7 @@ function App() {
         <div className="container mb-5">
             <div className="row g-3 g-md-4 mb-4">
                 <div className="col-12 col-sm-12 col-lg-3">
-                    <Header setRegion={setRegion}/>
+                    <Header setRegion={setRegion} region={region} />
                 </div>
                 <div className="col-12 col-sm-12 col-lg-9 rounded-4 p-2 p-sm-3 ">
                     <SearchBar searchTerm={search} setSearchTerm={setSearch}/>
@@ -90,8 +90,6 @@ function App() {
                     </div>
                 ) : <CountryList countries={countries} loading={loading}/>
             }
-
-
         </div>
     )
 }
