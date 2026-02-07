@@ -96,3 +96,16 @@ Open in browser:
 http://localhost:5173
 
 ```
+
+
+## Home Page
+
+![Home Page](./public/screenshots/home.png)
+
+## Search by Region Page
+
+![Results Page](./public/screenshots/region-search.png)
+
+## Search by Name Page
+
+![Results Page](./public/screenshots/name-search.png)
